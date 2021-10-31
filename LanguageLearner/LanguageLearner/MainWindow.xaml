@@ -5,8 +5,39 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LanguageLearner"
         mc:Ignorable="d"
-        Title="Language Learner" Height="200" Width="400">
+        Title="Language Learner" Height="190" Width="400"
+        KeyUp="Window_KeyUp"
+        KeyDown="Window_KeyDown">
+    <Window.DataContext>
+        <local:MainWindowViewModel />
+    </Window.DataContext>
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <TextBlock Grid.Row="0"
+                   HorizontalAlignment="Center" VerticalAlignment="Center"
+                   FontSize="40"
+                   Visibility="{Binding IsNativeWordVisible, Converter={x:Static local:Converters.BoolToHidden}}"
+                   Text="{Binding NativeWord}" />
+
+        <TextBlock Grid.Row="0"
+                   HorizontalAlignment="Center" VerticalAlignment="Center"
+                   FontSize="40"
+                   Visibility="{Binding IsAnswerVisible, Converter={x:Static local:Converters.BoolToHidden}}"
+                   Text="{Binding Answer}" />
         
+        <TextBox Grid.Row="1"
+                 HorizontalAlignment="Center" VerticalAlignment="Center"
+                 TextAlignment="Center"
+                 Width="360" Height="46"
+                 FontSize="30"
+                 TextChanged="TextBox_TextChanged" />
     </Grid>
 </Window>
