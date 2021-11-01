@@ -58,10 +58,10 @@ namespace LanguageLearner
         public void NewWord()
         {
             int newIndex = this.random.Next(0, this.words.Count);
-            this.currentIndex = newIndex == this.currentIndex ? (newIndex + 1) % this.words.Count : newIndex;
+            this.currentIndex = newIndex == this.currentIndex ? ((newIndex + 1) % this.words.Count) : newIndex;
 
-            NativeWord = FirstCharToUpper(this.words[newIndex][NativeLanguage]);
-            Answer = this.words[newIndex][LearnLanguage];
+            NativeWord = FirstCharToUpper(this.words[this.currentIndex][NativeLanguage]);
+            Answer = this.words[this.currentIndex][LearnLanguage];
         }
 
         private static string FirstCharToUpper(string input)

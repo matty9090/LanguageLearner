@@ -6,5 +6,77 @@
 	{
 		"English": "everyone",
 		"Korean": "여러분"
+	},
+	{
+		"English": "door",
+		"Korean": "문"
+	},
+	{
+		"English": "book",
+		"Korean": "책"
+	},
+	{
+		"English": "bed",
+		"Korean": "침대"
+	},
+	{
+		"English": "food",
+		"Korean": "음식"
+	},
+	{
+		"English": "man",
+		"Korean": "남자"
+	},
+	{
+		"English": "women",
+		"Korean": "여자"
+	},
+	{
+		"English": "meat",
+		"Korean": "고기"
+	},
+	{
+		"English": "water",
+		"Korean": "물"
+	},
+	{
+		"English": "seafood",
+		"Korean": "해물"
+	},
+	{
+		"English": "teeth",
+		"Korean": "이빨"
+	},
+	{
+		"English": "face",
+		"Korean": "얼굴"
+	},
+	{
+		"English": "lunch",
+		"Korean": "점심"
+	},
+	{
+		"English": "dinner",
+		"Korean": "저녁"
+	},
+	{
+		"English": "night",
+		"Korean": "밤"
+	},
+	{
+		"English": "warm",
+		"Korean": "따뜻한"
+	},
+	{
+		"English": "Saturday",
+		"Korean": "토요일"
+	},
+	{
+		"English": "Sunday",
+		"Korean": "일요일"
+	},
+	{
+		"English": "Monday",
+		"Korean": "월요일"
 	}
 ]

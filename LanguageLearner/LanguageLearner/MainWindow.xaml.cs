@@ -28,7 +28,7 @@ namespace LanguageLearner
 
         private void Window_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.Key == Key.LeftShift || e.Key == Key.RightShift)
+            if (e.Key == Key.LeftCtrl || e.Key == Key.RightCtrl)
             {
                 ViewModel.IsAnswerVisible = true;
                 ViewModel.IsNativeWordVisible = false;
@@ -38,7 +38,7 @@ namespace LanguageLearner
 
         private void Window_KeyUp(object sender, KeyEventArgs e)
         {
-            if (e.Key == Key.LeftShift || e.Key == Key.RightShift)
+            if (e.Key == Key.LeftCtrl || e.Key == Key.RightCtrl)
             {
                 ViewModel.IsAnswerVisible = false;
                 ViewModel.IsNativeWordVisible = true;
