@@ -15,13 +15,15 @@ namespace LanguageLearner
         public MainWindow()
         {
             InitializeComponent();
-
-            ViewModel.NativeWord = "Hello";
         }
 
-        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        private void UserInput_TextChanged(object sender, TextChangedEventArgs e)
         {
-
+            if (!string.IsNullOrWhiteSpace(UserInput.Text) && ViewModel.CheckAnswer(UserInput.Text))
+            {
+                ViewModel.NewWord();
+                UserInput.Text = string.Empty;
+            }
         }
 
         private void Window_KeyDown(object sender, KeyEventArgs e)

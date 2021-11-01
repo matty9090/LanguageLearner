@@ -8,7 +8,7 @@ namespace LanguageLearner
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
-        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        protected virtual void RaisePropertyChanged([CallerMemberName] string propertyName = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
@@ -21,7 +21,7 @@ namespace LanguageLearner
             }
 
             storage = value;
-            this.OnPropertyChanged(propertyName);
+            RaisePropertyChanged(propertyName);
 
             return true;
         }
