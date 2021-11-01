@@ -1,0 +1,23 @@
+﻿<Window x:Class="LanguageLearner.WordChooser"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:LanguageLearner"
+        mc:Ignorable="d"
+        Title="Choose words" Height="300" Width="200">
+    <Grid>
+        <ListView ItemsSource="{Binding Words}">
+            <ListView.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <StackPanel Orientation="Vertical" />
+                </ItemsPanelTemplate>
+            </ListView.ItemsPanel>
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <CheckBox Content="{Binding NativeWord}" Grid.Column="1" IsChecked="{Binding IsEnabled}" />
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </Grid>
+</Window>

@@ -1,11 +1,25 @@
 ﻿using System;
 using System.IO;
 using System.Linq;
+using System.Windows.Input;
 using System.Collections.Generic;
 using Newtonsoft.Json;
 
 namespace LanguageLearner
 {
+    public class Word
+    {
+        public string NativeWord { get; }
+        public string Translation { get; }
+        public bool IsEnabled { get; set; } = true;
+
+        public Word(string word, string translation)
+        {
+            NativeWord = word.FirstCharToUpper();
+            Translation = translation;
+        }
+    }
+
     public class MainWindowViewModel : ViewModelBase
     {
         private static readonly string DictionaryPath = "Words.json";
@@ -37,7 +51,11 @@ namespace LanguageLearner
             set => SetProperty(ref this.isAnswerVisible, value);
         }
 
-        private readonly IReadOnlyList<Dictionary<string, string>> words;
+        public ICommand OpenWordChooserCommand { get; }
+
+        private readonly IReadOnlyList<Word> words;
+        private IReadOnlyList<Word> enabledWords => this.words.Where(word => word.IsEnabled).ToList();
+
         private readonly Random random = new Random();
         private int currentIndex = 0;
 
@@ -45,10 +63,10 @@ namespace LanguageLearner
         {
             string json = File.ReadAllText(DictionaryPath);
             var words = JsonConvert.DeserializeObject<List<Dictionary<string, object>>>(json);
-            
-            this.words = words.Select(word => word.Select(translation => new KeyValuePair<string, string>(translation.Key, translation.Value as string))
-                .ToDictionary(k => k.Key, v => v.Value))
-                .ToList();
+
+            this.words = words.Select(word => new Word(word[NativeLanguage] as string, word[LearnLanguage] as string)).ToList();
+
+            OpenWordChooserCommand = new DelegateCommand(param => OpenWordChooser());
 
             NewWord();
         }
@@ -57,21 +75,25 @@ namespace LanguageLearner
 
         public void NewWord()
         {
-            int newIndex = this.random.Next(0, this.words.Count);
-            this.currentIndex = newIndex == this.currentIndex ? ((newIndex + 1) % this.words.Count) : newIndex;
+            if (this.enabledWords.Count > 0)
+            {
+                int newIndex = this.random.Next(0, this.enabledWords.Count);
+                this.currentIndex = newIndex == this.currentIndex ? ((newIndex + 1) % this.enabledWords.Count) : newIndex;
 
-            NativeWord = FirstCharToUpper(this.words[this.currentIndex][NativeLanguage]);
-            Answer = this.words[this.currentIndex][LearnLanguage];
+                NativeWord = this.enabledWords[this.currentIndex].NativeWord;
+                Answer = this.enabledWords[this.currentIndex].Translation;
+            }
         }
 
-        private static string FirstCharToUpper(string input)
+        private void OpenWordChooser()
         {
-            switch (input)
+            WordChooser chooser = new WordChooser
             {
-                case null: throw new ArgumentNullException(nameof(input));
-                case "": throw new ArgumentException($"{nameof(input)} cannot be empty", nameof(input));
-                default: return input[0].ToString().ToUpper() + input.Substring(1);
-            }
+                DataContext = new WordChooserViewModel(this.words)
+            };
+
+            chooser.ShowDialog();
+            NewWord();
         }
     }
 }
