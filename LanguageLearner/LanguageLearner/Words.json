@@ -68,15 +68,31 @@
 		"Korean": "따뜻한"
 	},
 	{
+		"English": "Monday",
+		"Korean": "월요일"
+	},
+	{
+		"English": "Tuesday",
+		"Korean": "화요일"
+	},
+	{
+		"English": "Wednesday",
+		"Korean": "수요일"
+	},
+	{
+		"English": "Thursday",
+		"Korean": "목요일"
+	},
+	{
+		"English": "Friday",
+		"Korean": "금요일"
+	},
+	{
 		"English": "Saturday",
 		"Korean": "토요일"
 	},
 	{
 		"English": "Sunday",
 		"Korean": "일요일"
-	},
-	{
-		"English": "Monday",
-		"Korean": "월요일"
 	}
 ]

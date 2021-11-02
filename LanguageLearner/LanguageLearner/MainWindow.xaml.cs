@@ -44,6 +44,11 @@ namespace LanguageLearner
                 ViewModel.IsNativeWordVisible = true;
                 e.Handled = true;
             }
+            else if (e.Key == Key.Enter)
+            {
+                ViewModel.NewWord();
+                e.Handled = true;
+            }
         }
     }
 }

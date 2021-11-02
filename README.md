@@ -6,4 +6,4 @@ Learn languages :D (just Korean rn).
 2. Build and run
 
 ## How to use
-Type the translation correctly to get a new word. Hold shift to peak at the answer.
+Type the translation correctly to get a new word. Hold shift to peak at the answer. Press enter to get a new word.
