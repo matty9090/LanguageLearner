@@ -62,6 +62,7 @@
     <Compile Include="DelegateCommand.cs" />
     <Compile Include="Utils.cs" />
     <Compile Include="ViewModelBase.cs" />
+    <Compile Include="Word.cs" />
     <Compile Include="WordChooser.xaml.cs">
       <DependentUpon>WordChooser.xaml</DependentUpon>
     </Compile>

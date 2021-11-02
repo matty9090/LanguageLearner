@@ -7,19 +7,6 @@ using Newtonsoft.Json;
 
 namespace LanguageLearner
 {
-    public class Word
-    {
-        public string NativeWord { get; }
-        public string Translation { get; }
-        public bool IsEnabled { get; set; } = true;
-
-        public Word(string word, string translation)
-        {
-            NativeWord = word.FirstCharToUpper();
-            Translation = translation;
-        }
-    }
-
     public class MainWindowViewModel : ViewModelBase
     {
         private static readonly string DictionaryPath = "Words.json";

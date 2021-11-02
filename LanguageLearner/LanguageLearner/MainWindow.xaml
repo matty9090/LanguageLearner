@@ -5,7 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LanguageLearner"
         mc:Ignorable="d"
-        Title="Language Learner" Height="190" Width="400"
+        Title="Language Learner"
+        SizeToContent="WidthAndHeight"
+        WindowStartupLocation="CenterScreen"
         KeyUp="Window_KeyUp"
         KeyDown="Window_KeyDown">
     <Window.DataContext>
@@ -30,22 +32,24 @@
             </Grid.ColumnDefinitions>
 
             <TextBlock Grid.Row="0"
-                   HorizontalAlignment="Center" VerticalAlignment="Center"
-                   FontSize="40"
-                   Visibility="{Binding IsNativeWordVisible, Converter={x:Static local:Converters.BoolToHidden}}"
-                   Text="{Binding NativeWord}" />
+                       Margin="4"
+                       HorizontalAlignment="Center" VerticalAlignment="Center"
+                       FontSize="40"
+                       Visibility="{Binding IsNativeWordVisible, Converter={x:Static local:Converters.BoolToHidden}}"
+                       Text="{Binding NativeWord}" />
 
             <TextBlock Grid.Row="0"
-                   HorizontalAlignment="Center" VerticalAlignment="Center"
-                   FontSize="40"
-                   Visibility="{Binding IsAnswerVisible, Converter={x:Static local:Converters.BoolToHidden}}"
-                   Text="{Binding Answer}" />
+                       HorizontalAlignment="Center" VerticalAlignment="Center"
+                       FontSize="40"
+                       Visibility="{Binding IsAnswerVisible, Converter={x:Static local:Converters.BoolToHidden}}"
+                       Text="{Binding Answer}" />
 
             <TextBox x:Name="UserInput"
                  Grid.Row="1"
                  HorizontalAlignment="Center" VerticalAlignment="Center"
                  TextAlignment="Center"
                  Width="360" Height="46"
+                 Margin="10"
                  FontSize="30"
                  TextChanged="UserInput_TextChanged" />
         </Grid>

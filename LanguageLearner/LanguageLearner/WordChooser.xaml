@@ -5,9 +5,22 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LanguageLearner"
         mc:Ignorable="d"
-        Title="Choose words" Height="300" Width="200">
-    <Grid>
-        <ListView ItemsSource="{Binding Words}">
+        Title="Choose words"
+        SizeToContent="WidthAndHeight"
+        WindowStartupLocation="CenterScreen">
+    <Grid Width="200">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0" Orientation="Vertical">
+            <Button Content="Select All" Command="{Binding SelectAllCommand}" Padding="2" Margin="0,0,0,1" />
+            <Button Content="Select None" Command="{Binding SelectNoneCommand}" Padding="2" Margin="0,0,0,1" />
+        </StackPanel>
+            
+        <ListView Grid.Row="1" ItemsSource="{Binding Words}">
             <ListView.ItemsPanel>
                 <ItemsPanelTemplate>
                     <StackPanel Orientation="Vertical" />
@@ -19,5 +32,14 @@
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
+
+        <Grid Grid.Row="2" Margin="6">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+
+            <Button Grid.Column="1" Content="Ok" Width="40" Height="24" Click="Ok_Click" />
+        </Grid>
     </Grid>
 </Window>
